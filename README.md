@@ -39,10 +39,6 @@ If you want to customize the QR code size or the appearance of the webpage, you 
 - **QR Code Size**: Adjust the `width` and `height` properties in the `QRCode` object in the `generateQR()` function in the `index.html` file.
 - **Styling**: Modify the CSS in the `<style>` section of the `index.html` file to change colors, fonts, and layout.
 
-## Screenshots
-
-![Screenshot](screenshot.png)
-
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request if you have any improvements or fixes.
@@ -55,18 +51,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 If you have any questions or feedback, feel free to reach out:
 
-- GitHub: [yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+- GitHub: https://github.com/luisofribeiro/
+- Email: luis@catarse.me
 ```
-
-### Explanation:
-- **Features**: Lists the main features of your project.
-- **Installation**: Provides instructions on how to set up the project locally.
-- **Usage**: Describes how to use the application.
-- **Customization**: Offers guidance on how to modify the project for specific needs.
-- **Screenshots**: Placeholder for a screenshot of the project (add your own image).
-- **Contributing**: Invites others to contribute to the project.
-- **License**: States the licensing terms.
-- **Contact**: Provides contact information for further inquiries.
-
-You can modify the placeholders such as `yourusername`, `your.email@example.com`, and `screenshot.png` to match your details and project specifics.
