@@ -1,2 +1,2 @@
-# qrcode
-Gerador de QR CODE 
+# Qrcode Catarse
+Gerador de QR CODE para o Catarsse
