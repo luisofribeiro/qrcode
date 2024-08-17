@@ -98,17 +98,20 @@
                         width: 200,  // Adjust the width as necessary
                         height: 200  // Adjust the height as necessary
                     });
-                    
+
                     setTimeout(() => {
                         const canvas = qrcodeContainer.querySelector('canvas');
                         const imgData = canvas.toDataURL("image/png");
                         const a = document.createElement('a');
                         a.href = imgData;
-                        a.download = 'qrcode.png';
+                        a.download = `qrcode-${website.replace(/https?:\/\//, '').replace(/\W+/g, '_')}.png`; // Use the URL as part of the file name
                         document.body.appendChild(a);
                         a.click();
                         document.body.removeChild(a);
-                    }, 100); // Slight delay to ensure QR code is rendered before download
+
+                        // Clear the input field after generating the QR code
+                        document.getElementById('website').value = '';
+                    }, 200); // Increased delay to 200ms
                     
                     button.textContent = 'Gerar outro QRCODE'; // Change button text
                 } catch (error) {
