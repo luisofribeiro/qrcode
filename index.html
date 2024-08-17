@@ -64,6 +64,14 @@
         }
         #qrcode {
             margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px; /* Set the height of the QR code container */
+        }
+        #qrcode canvas {
+            height: 100%; /* Make the QR code fill the container height */
+            width: auto;
         }
     </style>
 </head>
@@ -72,27 +80,37 @@
         <div class="logo">
             <img src="catarse-logo.png" alt="Catarse Logo">
         </div>
-        <h1>Gerador de QRCODE</h1>
+        <h1>Gerador de etiquetas</h1>
         <input type="text" id="website" placeholder="Digite o URL do site">
-        <button onclick="generateQR()">Gerar etiquetas</button>
+        <button id="generateButton" onclick="generateQR()">Gerar</button>
         <div id="qrcode"></div>
     </div>
     <script>
-        if (!console.debug) {
-            console.debug = console.log;
-        }
-
         function generateQR() {
             const website = document.getElementById('website').value;
+            const button = document.getElementById('generateButton');
             if (website) {
                 const qrcodeContainer = document.getElementById('qrcode');
-                qrcodeContainer.innerHTML = '';
+                qrcodeContainer.innerHTML = ''; // Clear previous QR code
                 try {
-                    new QRCode(qrcodeContainer, {
+                    const qrCode = new QRCode(qrcodeContainer, {
                         text: website,
-                        width: 128,
-                        height: 128
+                        width: 200,  // Adjust the width as necessary
+                        height: 200  // Adjust the height as necessary
                     });
+                    
+                    setTimeout(() => {
+                        const canvas = qrcodeContainer.querySelector('canvas');
+                        const imgData = canvas.toDataURL("image/png");
+                        const a = document.createElement('a');
+                        a.href = imgData;
+                        a.download = 'qrcode.png';
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                    }, 100); // Slight delay to ensure QR code is rendered before download
+                    
+                    button.textContent = 'Gerar outro QRCODE'; // Change button text
                 } catch (error) {
                     console.error("Erro ao gerar o código QR:", error);
                     qrcodeContainer.innerHTML = '<p style="color: red;">Erro ao gerar o código QR. Por favor, tente novamente.</p>';
